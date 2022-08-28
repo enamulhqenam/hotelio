@@ -19,15 +19,7 @@
 
                         <thead class="">
                             <tr class="border-bottom ">
-                                <th>Hotel Name</th>
-                                <th>Name</th>
-                                <th>Designation</th>
-                                <th>Phone</th>
-                                <th>Email</th>
-                                <th>Address</th>
-                                <th>Date Of Join</th>
-                                <th>Status</th>
-                                <th>Action</th>
+ 
                             </tr>
                         </thead>
                         <tbody>               
