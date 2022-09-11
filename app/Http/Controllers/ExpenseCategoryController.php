@@ -18,10 +18,10 @@ class ExpenseCategoryController extends Controller
     {
         if(request()->ajax()){
           return $ExpenseCategoris = Datatables::of(ExpenseCategory::all())
-          ->addColumn('action','layouts.dt_buttons_2')
+          ->addColumn('action','layouts.income_expense_category_btn')
           ->make(true);
         }
-        
+
         return view('expenseCategory.index');
     }
 
@@ -102,42 +102,42 @@ class ExpenseCategoryController extends Controller
         return $this->trash();
     }
 
-    
+
     public function destroyAll()
     {
         ExpenseCategory::withTrashed()->delete();
         return $this->index();
     }
 
-    
+
     public function trash()
     {
         $CategoryTrashed = ExpenseCategory::onlyTrashed()->get();
         return view('expenseCategory.trash', compact('CategoryTrashed'));
     }
 
-    
+
     public function forceDelete($id)
     {
         ExpenseCategory::withTrashed()->where('id',$id)->forceDelete();
         return back();
     }
 
-    
+
     public function restore($id)
     {
         ExpenseCategory::withTrashed()->where('id',$id)->restore();
         return back();
     }
 
-    
+
     public function restoreAll()
     {
         ExpenseCategory::withTrashed()->restore();
         return $this->index();
     }
 
-    
+
     public function emptyTrash()
     {
         ExpenseCategory::onlyTrashed()->forceDelete();

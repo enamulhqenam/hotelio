@@ -19,13 +19,13 @@ class IncomeCategoryController extends Controller
     {
         if(request()->ajax()){
             return $IncomeCategoris = Datatables::of(IncomeCategory::all())
-            ->addColumn('action','layouts.dt_buttons_2')
+            ->addColumn('action','layouts.income_expense_category_btn')
             ->make(true);
         }
-        
-        return view('incomeCategory.index'); 
+
+        return view('incomeCategory.index');
     }
-   
+
 
     /**
      * Show the form for creating a new resource.
@@ -123,7 +123,7 @@ class IncomeCategoryController extends Controller
         return back();
     }
 
- 
+
     public function restore($id)
     {
         IncomeCategory::withTrashed()->where('id',$id)->restore();
@@ -137,7 +137,7 @@ class IncomeCategoryController extends Controller
         return $this->index();
     }
 
- 
+
     public function emptyTrsh()
     {
         IncomeCategory::onlyTrashed()->forceDelete();
